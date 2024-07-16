@@ -8,9 +8,7 @@
 
 # [GoWander](https://gowander.darsler.com)
 
-GoWander, presented as gowander, is an AI-powered trip planner web application built on React running Vite and TypeScript under the hood.
-
-With the help of Google's Gemini AI and Firebase, this application is serverless. Styling the app's user interface (UI) is TailwindCSS and shadcn/ui.
+GoWander, presented as gowander, is an AI-powered trip planner web application built on React running Vite and TypeScript under the hood with the help of Google's Gemini AI and Firebase for its core functionality. Styling the app's user interface (UI) is TailwindCSS and shadcn/ui.
 
 It is an industry-best project that is fast, accessible and easy to use.
 
