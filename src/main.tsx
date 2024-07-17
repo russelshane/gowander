@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import CreateTrip from "./routes/create-trip/index.tsx";
+import CreateTrip from "@/routes/create-trip/index.tsx";
+import App from "@/routes/App.tsx";
 import Header from "@/components/custom/Header.tsx";
+import "@/index.css";
 
 const router = createBrowserRouter([
   {
