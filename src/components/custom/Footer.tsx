@@ -11,7 +11,7 @@ function Footer() {
           className="object-contain max-w-56 mb-8"
         />
         <p className="text-slate-600 text-lg">
-          &copy; 2024 GoWander AI. All Rights Reserved
+          &copy; 2024 GoWander AI. All Rights Reserved.
         </p>
         <p className="text-sm text-slate-500">
           Built and Maintained by{" "}
