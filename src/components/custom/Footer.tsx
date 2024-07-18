@@ -14,15 +14,16 @@ function Footer() {
           &copy; 2024 GoWander AI. All Rights Reserved.
         </p>
         <p className="text-sm text-slate-500">
-          Built and Maintained by{" "}
+          This project is{" "}
           <a
             className="underline hover:opacity-60"
             target="_blank"
             rel="noreferrer"
-            href="https://github.com/russelshane"
+            href="https://github.com/russelshane/gowander"
           >
-            Darsler Fortes
+            open-source
           </a>
+          .
         </p>
 
         <p className="text-sm text-slate-600 mb-2 mt-8">POWERED BY</p>
