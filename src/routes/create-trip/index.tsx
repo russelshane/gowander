@@ -70,7 +70,7 @@ function CreateTrip() {
           </div>
           <div className="flex flex-col gap-8 w-full">
             <h2 className="w-full max-w-full md:max-w-md text-3xl font-medium leading-tight text-slate-800">
-              2. &nbsp;&nbsp;What's your budget?
+              2. &nbsp;&nbsp;Tell us your price point
             </h2>
           </div>
         </section>
