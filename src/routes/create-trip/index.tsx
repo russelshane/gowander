@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MapPin, MoveRightIcon, UsersIcon } from "lucide-react";
+import { InfoIcon, MapPin, MoveRightIcon, UsersIcon } from "lucide-react";
 import { useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { Input } from "../../components/ui/input";
@@ -8,6 +8,7 @@ import {
   TravelerTypeList,
 } from "../../constants/planner-options";
 import { Button } from "../../components/ui/button";
+import { Link } from "react-router-dom";
 
 interface IPlaceResult {
   label: string;
@@ -23,7 +24,7 @@ function CreateTrip() {
         <div className="px-8 py-20 w-full bg-black bg-opacity-30">
           <div className="flex flex-col gap-6">
             <h1 className="font-bold text-5xl md:text-6xl drop-shadow-md text-slate-100">
-              Generate your next adventure
+              Select your destination
             </h1>
             <p className="text-slate-100 text-md drop-shadow-md md:text-xl">
               Our AI trip planner will generate a personalized travel plan for
@@ -117,10 +118,29 @@ function CreateTrip() {
             </div>
           </div>
 
-          <Button className="bg-orange-400 text-lg py-7 flex gap-4 items-center">
-            Generate Travel Plan
-            <MoveRightIcon />
-          </Button>
+          <div className="flex flex-col gap-6 w-full">
+            <Button className="bg-orange-400 text-lg py-7 flex gap-4 items-center">
+              Generate Travel Plan
+              <MoveRightIcon />
+            </Button>
+
+            <p className="text-sm text-slate-600">
+              <InfoIcon
+                className="inline mr-1.5 text-blue-600 -mt-1.5"
+                size={20}
+              />
+              By generating a travel plan, You agree that we will process
+              non-anonymous data that you have entered above along with your
+              email. For more information, read our{" "}
+              <Link
+                className="cursor-pointer text-orange-400 underline hover:opacity-60"
+                to="/help/privacy"
+              >
+                privacy policy
+              </Link>
+              .
+            </p>
+          </div>
         </section>
       </div>
     </main>
