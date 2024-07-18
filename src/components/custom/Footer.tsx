@@ -6,7 +6,7 @@ function Footer() {
     <footer className="w-full p-8 flex flex-col gap-16 justify-between lg:flex-row md:gap-24 bg-slate-100">
       <div className="flex flex-col">
         <img
-          src="assets/branding/svg-gowander-logo-full-flex-dark.svg"
+          src="/assets/branding/svg-gowander-logo-full-flex-dark.svg"
           alt="AI Travel Planner - GoWander"
           className="object-contain max-w-56 mb-8"
         />
