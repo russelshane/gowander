@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { InfoIcon, MapPin, MoveRightIcon, UsersIcon } from "lucide-react";
+import { InfoIcon, MoveRightIcon, UsersIcon } from "lucide-react";
 import { useState } from "react";
-import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import { Input } from "../../components/ui/input";
+import { Link } from "react-router-dom";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { PlannerHero } from "@/components/custom/planner/PlannerHero";
 import {
   TravelerBudgetList,
   TravelerTypeList,
-} from "../../constants/planner-options";
-import { Button } from "../../components/ui/button";
-import { Link } from "react-router-dom";
+} from "@/constants/planner-options";
 
 interface IPlaceResult {
   label: string;
@@ -20,37 +20,7 @@ function CreateTrip() {
 
   return (
     <main className="w-full">
-      <div className="w-full bg-tripHero bg-cover bg-center">
-        <div className="px-8 py-20 w-full bg-black bg-opacity-30">
-          <div className="flex flex-col gap-6">
-            <h1 className="font-bold text-5xl md:text-6xl drop-shadow-md text-slate-100">
-              Select your destination
-            </h1>
-            <p className="text-slate-100 text-md drop-shadow-md md:text-xl">
-              Our AI trip planner will generate a personalized travel plan for
-              you based on your preferences.
-            </p>
-
-            <div className="w-full max-w-3xl p-3 bg-slate-100 rounded-xl flex items-center gap-2">
-              <MapPin className="text-slate-600" />
-              <div className="w-full">
-                <GooglePlacesAutocomplete
-                  apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-                  selectProps={
-                    {
-                      place,
-                      onChange: (v: any) => {
-                        setPlace(v);
-                        console.log(v);
-                      },
-                    } as any
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PlannerHero place={place} setPlace={setPlace} />
 
       <div className="p-8 py-20 flex flex-col gap-10 w-full max-w-4xl mx-auto">
         <div className="flex flex-col gap-2">
