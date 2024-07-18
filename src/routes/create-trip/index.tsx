@@ -1,8 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MapPin } from "lucide-react";
+import { MapPin, MoveRightIcon, UsersIcon } from "lucide-react";
 import { useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { Input } from "../../components/ui/input";
+import {
+  TravelerBudgetList,
+  TravelerTypeList,
+} from "../../constants/planner-options";
+import { Button } from "../../components/ui/button";
 
 interface IPlaceResult {
   label: string;
@@ -72,7 +77,50 @@ function CreateTrip() {
             <h2 className="w-full max-w-full md:max-w-md text-3xl font-medium leading-tight text-slate-800">
               2. &nbsp;&nbsp;Tell us your price point
             </h2>
+            <div className="flex flex-col md:grid md:grid-cols-3 gap-2 justify-between">
+              {TravelerBudgetList.map((val, index) => (
+                <div
+                  className="flex flex-col gap-1.5 border-2 rounded-md cursor-pointer p-6 hover:bg-slate-200"
+                  key={index}
+                >
+                  {val.icon}
+                  <h3 className="text-xl font-bold text-slate-800">
+                    {val.title}
+                  </h3>
+                  <p className="text-slate-600">{val.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
+
+          <div className="flex flex-col gap-8 w-full">
+            <h2 className="w-full max-w-full md:max-w-md text-3xl font-medium leading-tight text-slate-800">
+              3. &nbsp;&nbsp;Who are you travelling with?
+            </h2>
+
+            <div className="grid grid-cols-2 gap-2 w-full justify-between">
+              {TravelerTypeList.map((val, index) => (
+                <div
+                  className="flex flex-col gap-1.5 border-2 w-full rounded-md cursor-pointer p-6 hover:bg-slate-200"
+                  key={index}
+                >
+                  {val.icon}
+                  <h3 className="text-xl font-bold text-slate-800">
+                    {val.title}
+                  </h3>
+                  <p className="text-slate-600 mt-2 flex gap-1.5 text-sm items-center">
+                    <UsersIcon size={16} />
+                    {val.people}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Button className="bg-orange-400 text-lg py-7 flex gap-4 items-center">
+            Generate Travel Plan
+            <MoveRightIcon />
+          </Button>
         </section>
       </div>
     </main>
