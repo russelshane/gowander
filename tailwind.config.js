@@ -18,6 +18,7 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: { tripHero: "url(/rtw7fgqatgoc1vpcpamb.webp)" },
       colors: {},
       keyframes: {
         "accordion-down": {
