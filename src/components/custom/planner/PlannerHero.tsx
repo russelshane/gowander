@@ -2,13 +2,11 @@ import { MapPin, SearchIcon } from "lucide-react";
 import usePlacesService from "react-google-autocomplete/lib/usePlacesAutocompleteService";
 import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { useDispatch } from "react-redux";
+import { changeDestination } from "../../../lib/redux/planner/destinationSlice";
 
-interface IPlannerHero {
-  destination?: string;
-  setDestination: (d: string) => void;
-}
-
-function PlannerHero({ setDestination }: IPlannerHero) {
+function PlannerHero() {
+  const dispatch = useDispatch();
   const [showResults, setShowResults] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>();
   const { placesService, placePredictions, getPlacePredictions } =
@@ -65,7 +63,7 @@ function PlannerHero({ setDestination }: IPlannerHero) {
                           console.log(item);
                           setShowResults(false);
                           setSearchQuery(item.description);
-                          setDestination(item.description);
+                          dispatch(changeDestination(item.description));
                         }}
                       >
                         <SearchIcon size={18} className="text-slate-500" />

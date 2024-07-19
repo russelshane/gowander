@@ -8,12 +8,16 @@ import App from "@/routes/App.tsx";
 import Header from "@/components/custom/Header.tsx";
 import Footer from "@/components/custom/Footer.tsx";
 import "@/index.css";
-import numberOfDaysReducer from "@/lib/plannerSlice";
+import numberOfDaysReducer from "@/lib/redux/planner/numberOfDaysSlice";
+import destinationReducer from "@/lib/redux/planner/destinationSlice";
+import numberOfPeopleReducer from "@/lib/redux/planner/numberOfPeopleSlice";
 
 // Creates a global redux store to access state
 const store = configureStore({
   reducer: {
-    plannerNumberOfDays: numberOfDaysReducer,
+    numberOfDays: numberOfDaysReducer,
+    destination: destinationReducer,
+    numberOfPeople: numberOfPeopleReducer,
   },
 });
 

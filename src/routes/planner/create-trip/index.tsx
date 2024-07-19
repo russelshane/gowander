@@ -6,27 +6,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { PlannerHero } from "@/components/custom/planner/PlannerHero";
-import { incrementNoOfDays, decrementNoOfDays } from "@/lib/plannerSlice";
+import {
+  incrementNoOfDays,
+  decrementNoOfDays,
+} from "@/lib/redux/planner/numberOfDaysSlice";
+import { updateNumberOfPeople } from "@/lib/redux/planner/numberOfPeopleSlice";
 import {
   TravelerBudgetList,
   TravelerTypeList,
 } from "@/constants/planner-options";
 
 function CreateTrip() {
-  const [destination, setDestination] = useState<string>();
   const [budget, setBudget] = useState<string>();
-  const [pax, setPax] = useState<string>();
 
   // Using redux toolkit to manage the state of the
   // travel planner generator
   const dispatch = useDispatch();
-  const numberOfDays = useSelector(
-    (state) => (state as any).plannerNumberOfDays.value
+  const numberOfPeople = useSelector(
+    (state) => (state as any).numberOfPeople.value
   );
+  const numberOfDays = useSelector(
+    (state) => (state as any).numberOfDays.value
+  );
+  const destination = useSelector((state) => (state as any).destination.value);
 
   return (
     <main className="w-full">
-      <PlannerHero destination={destination} setDestination={setDestination} />
+      <PlannerHero />
 
       <div className="p-8 py-20 flex flex-col gap-10 w-full max-w-4xl mx-auto md:mx-0">
         <div className="flex flex-col gap-2">
@@ -104,9 +110,9 @@ function CreateTrip() {
             <div className="grid grid-cols-2 gap-2 w-full justify-between">
               {TravelerTypeList.map((val, index) => (
                 <div
-                  onClick={() => setPax(val.title)}
+                  onClick={() => dispatch(updateNumberOfPeople(val.title))}
                   className={`flex flex-col gap-1.5 border-2 rounded-md cursor-pointer p-6 ${
-                    pax === val.title && "border-4 border-orange-400"
+                    numberOfPeople === val.title && "border-4 border-orange-400"
                   } hover:bg-slate-100`}
                   key={index}
                 >
