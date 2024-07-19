@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { InfoIcon, MoveRightIcon, UsersIcon } from "lucide-react";
+import { InfoIcon, MapPin, MoveRightIcon, UsersIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
@@ -10,19 +10,18 @@ import {
   TravelerTypeList,
 } from "@/constants/planner-options";
 
-interface IPlaceResult {
-  label: string;
-  value: any;
-}
-
 function CreateTrip() {
-  const [place, setPlace] = useState<IPlaceResult>();
+  const [destination, setDestination] = useState<string>();
+  const [budget, setBudget] = useState<string>();
+  const [pax, setPax] = useState<string>();
+
+  // todo: use redux
 
   return (
     <main className="w-full">
-      <PlannerHero place={place} setPlace={setPlace} />
+      <PlannerHero destination={destination} setDestination={setDestination} />
 
-      <div className="p-8 py-20 flex flex-col gap-10 w-full max-w-4xl mx-auto">
+      <div className="p-8 py-20 flex flex-col gap-10 w-full max-w-4xl mx-auto md:mx-0">
         <div className="flex flex-col gap-2">
           <h1 className="font-bold text-4xl md:text-5xl  text-slate-800">
             Travel Preferences
@@ -31,6 +30,14 @@ function CreateTrip() {
             Please provide some basic information to help us deliver better
             results.
           </p>
+          {destination && (
+            <div className="flex items-center gap-2 p-4 bg-orange-400 rounded-md mt-4">
+              <MapPin className="text-slate-100" size={24} />
+              <p className="text-lg text-slate-100 font-semibold">
+                {destination}
+              </p>
+            </div>
+          )}
         </div>
 
         <section className="w-full max-w-4xl mx-auto p-4 flex flex-col gap-20">
@@ -51,14 +58,17 @@ function CreateTrip() {
             <div className="flex flex-col md:grid md:grid-cols-3 gap-2 justify-between">
               {TravelerBudgetList.map((val, index) => (
                 <div
-                  className="flex flex-col gap-1.5 border-2 rounded-md cursor-pointer p-6 hover:bg-slate-200"
                   key={index}
+                  onClick={() => setBudget(val.title)}
+                  className={`flex flex-col gap-1.5 border-2 rounded-md cursor-pointer p-6 ${
+                    budget === val.title && "border-4 border-orange-400"
+                  } hover:bg-slate-100`}
                 >
                   {val.icon}
                   <h3 className="text-xl font-bold text-slate-800">
                     {val.title}
                   </h3>
-                  <p className="text-slate-600">{val.description}</p>
+                  <p className="text-slate-600 text-sm">{val.description}</p>
                 </div>
               ))}
             </div>
@@ -72,7 +82,10 @@ function CreateTrip() {
             <div className="grid grid-cols-2 gap-2 w-full justify-between">
               {TravelerTypeList.map((val, index) => (
                 <div
-                  className="flex flex-col gap-1.5 border-2 w-full rounded-md cursor-pointer p-6 hover:bg-slate-200"
+                  onClick={() => setPax(val.title)}
+                  className={`flex flex-col gap-1.5 border-2 rounded-md cursor-pointer p-6 ${
+                    pax === val.title && "border-4 border-orange-400"
+                  } hover:bg-slate-100`}
                   key={index}
                 >
                   {val.icon}
