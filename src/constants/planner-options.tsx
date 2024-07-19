@@ -49,7 +49,7 @@ export const TravelerBudgetList = [
   {
     id: 1,
     title: "Moderate",
-    description: "Keep costs on the average",
+    description: "Costs stay on average",
     icon: <BanknoteIcon className="text-orange-400" />,
   },
   {
