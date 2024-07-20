@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { InfoIcon, MapPin, MoveRightIcon, UsersIcon } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Input } from "@/components/ui/input";
@@ -15,20 +14,20 @@ import {
   TravelerBudgetList,
   TravelerTypeList,
 } from "@/constants/planner-options";
+import { updateBudget } from "@/lib/redux/planner/budgetSlice";
 
 function CreateTrip() {
-  const [budget, setBudget] = useState<string>();
-
   // Using redux toolkit to manage the state of the
   // travel planner generator
   const dispatch = useDispatch();
+  const destination = useSelector((state) => (state as any).destination.value);
+  const budget = useSelector((state) => (state as any).budget.value);
   const numberOfPeople = useSelector(
     (state) => (state as any).numberOfPeople.value
   );
   const numberOfDays = useSelector(
     (state) => (state as any).numberOfDays.value
   );
-  const destination = useSelector((state) => (state as any).destination.value);
 
   return (
     <main className="w-full">
@@ -87,7 +86,7 @@ function CreateTrip() {
               {TravelerBudgetList.map((val, index) => (
                 <div
                   key={index}
-                  onClick={() => setBudget(val.title)}
+                  onClick={() => dispatch(updateBudget(val.title))}
                   className={`flex flex-col gap-1.5 border-2 rounded-md cursor-pointer p-6 ${
                     budget === val.title && "border-4 border-orange-400"
                   } hover:bg-slate-100`}

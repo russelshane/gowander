@@ -11,13 +11,15 @@ import "@/index.css";
 import numberOfDaysReducer from "@/lib/redux/planner/numberOfDaysSlice";
 import destinationReducer from "@/lib/redux/planner/destinationSlice";
 import numberOfPeopleReducer from "@/lib/redux/planner/numberOfPeopleSlice";
+import budgetSliceReducer from "@/lib/redux/planner/budgetSlice";
 
 // Creates a global redux store to access state
 const store = configureStore({
   reducer: {
     numberOfDays: numberOfDaysReducer,
-    destination: destinationReducer,
     numberOfPeople: numberOfPeopleReducer,
+    destination: destinationReducer,
+    budget: budgetSliceReducer,
   },
 });
 
